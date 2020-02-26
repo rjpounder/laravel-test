@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Edit Contact</div>
                 <div class="card-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('contacts-update', $contact) }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('contacts.update', $contact) }}">
                         @include('contacts.partials.form')
                         <div class="form-group">
                             <div class="col-md-6">

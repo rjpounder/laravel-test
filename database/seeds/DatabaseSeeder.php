@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
         $companyStatuses = [
             ['name' => 'Active'],
             ['name' => 'Lost'],
@@ -19,8 +18,7 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Prospect'],
         ];
 
-        foreach($companyStatuses as $status)
-        {
+        foreach ($companyStatuses as $status) {
             App\CompanyStatus::create($status);
         }
 
@@ -30,8 +28,8 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Reseller'],
             ['name' => 'Supplier'],
         ];
-        foreach($companyTypes as $companyType)
-        {
+
+        foreach ($companyTypes as $companyType) {
             App\CompanyType::create($companyType);
         }
 
@@ -41,14 +39,13 @@ class DatabaseSeeder extends Seeder
             ['name' => 'Manager'],
             ['name' => 'Staff'],
         ];
-        foreach($contactRoles as $role)
-        {
+
+        foreach ($contactRoles as $role) {
             App\ContactRole::create($role);
         }
 
-
         factory(App\Company::class, 500)->create()->each(function ($c) {
-            $c->contacts()->saveMany(factory(App\Contact::class, rand(1,5))->make());
+            $c->contacts()->saveMany(factory(App\Contact::class, rand(1, 5))->make());
         });
     }
 }
