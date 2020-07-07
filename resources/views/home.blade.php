@@ -1,81 +1,99 @@
 @extends('layouts.app')
 
 @section('head')
-    <style>
-        .tasks li {
-            margin-bottom: 15px;
-        }
-    </style>
+  <style>
+    .tasks li {
+      margin-bottom: 15px;
+    }
+  </style>
 @endsection
 
 @section('content')
-<div class="container">
+  <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+          <div class="card-body">
+            @if (session('status'))
+              <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+              </div>
+            @endif
+            <p>
+              Please work through the mock client issues listed below. Try to group each solution into a
+              separate git commit as best you can.
+            </p>
+            <p>
+              For any new screens or UI, there is no need to make it look pretty, as long as it's functional.
+            </p>
 
-                    <p>
-                        Please work through the issues listed below. Try to group each solution into a separate commit
-                        as best you can. For any new screens, there is no need to make them look pretty.
-                    </p>
-                    <ol class="tasks" style="list-style: decimal inside;">
-                        <li>
-                            When I try to <a href="{{ route('contacts.create') }}">create a contact</a> I receive an
-                            error, can you fix this?
-                        </li>
-                        <li>
-                            The <a href="{{ route('contacts') }}">contacts</a> page seems to be loading quite slowly.
-                            Can you identify the issue and fix it?
-                            <br>
-                            <small>
-                                (In the real world we would use pagination, but the page should still load quickly when
-                                loading all records at once.)
-                            </small>
-                        </li>
-                        <li>
-                            The company status doesn't seem to be showing on the
-                            <a href="{{ route('companies') }}">companies</a> page. Can you make it show?
-                        </li>
-                        <li>
-                            We need to be able store addresses for contacts. Can you create the address resource
-                            and allow for addresses to be associated with a contact? A contact can have many addresses.
-                        </li>
-                        <li>
-                            We need to be able to store orders placed by companies. An order needs:
-                            <ul>
-                                <li>a unique order number</li>
-                                <li>to store the particular contact from the company that placed the order</li>
-                                <li>
-                                    to allow for many order items. Each order item should contain a product name and a
-                                    price
-                                </li>
-                            </ul>
-                            Can you create the resources and screens to allow orders to be entered? We'll also
-                            need a link adding to the top bar which will take the user to an index of all orders.
-                        </li>
-                        <li>
-                            Can you add two buttons to the order index screen to change the sorting? The first should
-                            sort by the number of items in the order. The second should sort by the total monetary value
-                            of the order.
-                        </li>
-                        <li>
-                            Can you have the system send an email whenever an order is created? The email should be sent
-                            to info@pretendcompany.com and be CC'd to accounts@pretendcompany.com. The content of the
-                            email can be plain text, but should include all the details about the order and its items.
-                        </li>
-                    </ol>
+            <h2>Beginner</h2>
 
-                </div>
-            </div>
+            <ol class="tasks" style="list-style: decimal inside;">
+              <li>
+                When I try to <a href="{{ route('contacts.create') }}">create a contact</a> I receive an
+                error, can you fix this?
+              </li>
+              <li>
+                <b>Please run the included database seeder before attempting this task.</b>
+                With hundreds of records, the <a href="{{ route('contacts') }}">contacts</a> page seems to
+                be loading very slowly.
+                Can you identify the issue and fix it?
+              </li>
+              <li>
+                We need to be able store addresses for contacts. Add functionality to allow for addresses to
+                be associated with a contact. A contact can have many addresses.
+              </li>
+            </ol>
+
+            <h2>Intermediate</h2>
+
+            <ol class="tasks" style="list-style: decimal inside;">
+              <li>
+                We need to be able to raise and store orders placed by companies. An order needs:
+                <ul>
+                  <li>A unique order number</li>
+                  <li>A reference to who at the company placed the order (i.e. which contact)</li>
+                  <li>
+                    To allow for many order items. An order item is composed of a product name (free text) and a price.
+                  </li>
+                </ul>
+                Can you create the facility to allow orders to be entered and displayed in a list (just like the contact
+                and company indexes)?
+              </li>
+              <li>
+                Can you have the system send an email whenever an order is created? The email should be sent
+                to info@pretendcompany.com. The content of the email can be plain text, but should include all the
+                details about the order and its items.
+              </li>
+            </ol>
+
+            <h2>Advanced</h2>
+
+            <ol class="tasks" style="list-style: decimal inside;">
+              <li>
+                Can you add the facility to your orders list to change the sorting? We would like to be able to sort by
+                both the number of items in the order, as well as the total monetary value of the order.
+              </li>
+              <li>
+                We want to remind staff to process orders. Can you add functionality to automatically send an in-app
+                notification to all users 30 minutes after an order has been created?
+                <ul>
+                  <li>
+                    There is no need for a fancy UI (a simple box on screen containing the notification body will be fine).
+                  </li>
+                  <li>
+                    Pages do not need to check for new notifications in the background, but the notification should be
+                    deleted once it has been displayed to the user.
+                  </li>
+                </ul>
+              </li>
+            </ol>
+          </div>
         </div>
+      </div>
     </div>
-</div>
+  </div>
 @endsection

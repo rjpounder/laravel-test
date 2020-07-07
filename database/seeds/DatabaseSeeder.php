@@ -44,8 +44,12 @@ class DatabaseSeeder extends Seeder
             App\ContactRole::create($role);
         }
 
-        factory(App\Company::class, 500)->create()->each(function ($c) {
+        \Illuminate\Support\Facades\DB::beginTransaction();
+
+        factory(App\Company::class, 250)->create()->each(function ($c) {
             $c->contacts()->saveMany(factory(App\Contact::class, rand(1, 5))->make());
         });
+
+        \Illuminate\Support\Facades\DB::commit();
     }
 }
