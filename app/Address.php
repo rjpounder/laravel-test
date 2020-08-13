@@ -48,6 +48,7 @@ class Address extends Model
         'address_line_2',
         'city',
         'town',
+        'zip_code',
         'country'
     ];
 
