@@ -7,25 +7,27 @@ use App\Contact;
 use App\Http\Requests\CreateAddress;
 use App\Http\Requests\UpdateAddress;
 
-class AddressController extends Controller
+class AddressesController extends Controller
 {
     public function index(Contact $contact)
     {
-        $addresses = $contact->addresses()->get();
+        $addresses = $contact->addresses()->paginate(15);
 
         return view('addresses.index', compact('addresses', 'contact'));
     }
 
     public function create(Contact $contact)
     {
-        return view('addresses.create', compact('contact'));
+        $address = new Address;
+        return view('addresses.create', compact('contact', 'address'));
     }
 
-    public function store(CreateAddress $request)
+    public function store(CreateAddress $request, Contact $contact)
     {
-        Address::create($request->all());
+        $address = array_merge($request->all(), ['contact_id' => $contact->id]);
+        Address::create($address);
 
-        return response()->redirectToRoute('addresses', ['contact'=> $request->contact_id])->with('alert', 'Address Created!');
+        return response()->redirectToRoute('addresses', ['contact'=> $contact->id])->with('alert', 'Address Created!');
     }
 
     public function edit(Address $address)
@@ -37,6 +39,6 @@ class AddressController extends Controller
     {
         $address->update($request->all());
 
-        return response()->redirectToRoute('addresses', ['contact'=> $address->contact()->pluck('id')])->with('alert', 'Address updated!');
+        return response()->redirectToRoute('addresses', ['contact'=> $address->contact])->with('alert', 'Address updated!');
     }
 }
