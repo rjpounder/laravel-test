@@ -16,6 +16,13 @@
                                 </button>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-6">
+                                <a href="{{ route('addresses', $contact) }}"  class="btn btn-success">
+                                    Addresses
+                                </a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
