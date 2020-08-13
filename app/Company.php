@@ -26,6 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereUpdatedAt($value)
+ * @property-read int|null $contacts_count
  */
 class Company extends Model
 {

@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ContactRole whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ContactRole whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\ContactRole whereUpdatedAt($value)
+ * @property-read int|null $contacts_count
  */
 class ContactRole extends Model
 {

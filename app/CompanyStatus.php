@@ -20,6 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\CompanyStatus whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\CompanyStatus whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\CompanyStatus whereUpdatedAt($value)
+ * @property-read int|null $companies_count
  */
 class CompanyStatus extends Model
 {

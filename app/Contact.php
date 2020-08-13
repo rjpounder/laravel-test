@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contact whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contact whereLastName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Contact whereUpdatedAt($value)
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Address[] $addresses
+ * @property-read int|null $addresses_count
  */
 class Contact extends Model
 {
