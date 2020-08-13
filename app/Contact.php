@@ -44,6 +44,14 @@ class Contact extends Model
     ];
 
     /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function addresses()
+    {
+        return $this->hasMany(Address::class);
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function company()
@@ -58,5 +66,4 @@ class Contact extends Model
     {
         return $this->belongsTo(ContactRole::class);
     }
-
 }
