@@ -25,9 +25,9 @@ class UpdateAddress extends FormRequest
     {
         return [
             'name' => 'required',
-            'contact_id' => 'required|exists:App\Contact,id',
             'address_line_1' => 'required',
             'town' => 'required',
+            'zip_code' => 'required',
             'country' => 'required',
         ];
     }
