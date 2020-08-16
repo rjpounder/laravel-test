@@ -24,6 +24,9 @@ class UpdateOrder extends FormRequest
     public function rules()
     {
         return [
+            'contact_id' => 'required|exists:App\Models\Contact,id',
+            'orderitem.*.name' => 'required',
+            'orderitem.*.price' => 'required|regex:/^\d+(\.\d{1,2})?$/'
         ];
     }
 }
