@@ -35,10 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::post('addresses/{address}/update', 'AddressesController@update')->name('addresses.update');
 
     Route::get('orders/{sortBy?}/{direction?}', 'OrderController@index')->name('orders');
-    Route::get('orders/create', 'OrderController@create')->name('orders.create');
-    Route::post('orders/create', 'OrderController@store')->name('orders.store');
-    Route::get('orders/{order}/edit', 'OrderController@edit')->name('orders.edit');
-    Route::post('orders/{order}/update', 'OrderController@update')->name('orders.update');
+    Route::get('order/create', 'OrderController@create')->name('orders.create');
+    Route::post('order/create', 'OrderController@store')->name('orders.store');
+    Route::get('order/{order}/edit', 'OrderController@edit')->name('orders.edit');
+    Route::post('order/{order}/update', 'OrderController@update')->name('orders.update');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');

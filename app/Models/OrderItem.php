@@ -33,7 +33,8 @@ class OrderItem extends Model
      * @var array
      */
     protected $fillable = [
-
+        'name',
+        'price'
     ];
 
     public function order()
