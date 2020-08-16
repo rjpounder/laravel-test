@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($companyStatuses as $status) {
-            App\CompanyStatus::create($status);
+            App\Models\CompanyStatus::create($status);
         }
 
         $companyTypes = [
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($companyTypes as $companyType) {
-            App\CompanyType::create($companyType);
+            App\Models\CompanyType::create($companyType);
         }
 
         $contactRoles = [
@@ -41,16 +41,16 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($contactRoles as $role) {
-            App\ContactRole::create($role);
+            App\Models\ContactRole::create($role);
         }
 
         \Illuminate\Support\Facades\DB::beginTransaction();
 
-        factory(App\Company::class, 250)->create()->each(function ($c) {
-            $contacts = factory(App\Contact::class, rand(1, 5))->make();
+        factory(App\Models\Company::class, 250)->create()->each(function ($c) {
+            $contacts = factory(App\Models\Contact::class, rand(1, 5))->make();
             $c->contacts()->saveMany($contacts);
             $contacts->each(function ($contact) {
-                $addresses = factory(App\Address::class, rand(1, 5))->make();
+                $addresses = factory(App\Models\Address::class, rand(1, 5))->make();
                 $contact->addresses()->saveMany($addresses);
             });
         });

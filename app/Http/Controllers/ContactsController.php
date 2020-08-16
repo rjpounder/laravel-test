@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
-use App\Contact;
-use App\ContactRole;
+use App\Models\Company;
+use App\Models\Contact;
+use App\Models\ContactRole;
 use App\Http\Requests\CreateContact;
 use App\Http\Requests\UpdateContact;
 use Illuminate\Http\Request;

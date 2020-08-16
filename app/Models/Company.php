@@ -1,18 +1,18 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * App\Company
+ * App\Models\Company
  *
- * @property-read \App\CompanyStatus $companyStatus
- * @property-read \App\CompanyType $companyType
- * @property-read \Illuminate\Database\Eloquent\Collection|\App\Contact[] $contacts
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company query()
+ * @property-read \App\Models\CompanyStatus $companyStatus
+ * @property-read \App\Models\CompanyType $companyType
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Contact[] $contacts
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company query()
  * @mixin \Eloquent
  * @property int $id
  * @property string $name
@@ -20,12 +20,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $company_status_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereCompanyStatusId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereCompanyTypeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereName($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Company whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company whereCompanyStatusId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company whereCompanyTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Company whereUpdatedAt($value)
  * @property-read int|null $contacts_count
  */
 class Company extends Model

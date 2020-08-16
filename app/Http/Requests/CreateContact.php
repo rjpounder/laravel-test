@@ -26,8 +26,8 @@ class CreateContact extends FormRequest
         return [
             'first_name' => 'required',
             'last_name' => 'required',
-            'company_id' => 'required|exists:App\Company,id',
-            'contact_role_id' => 'required|exists:App\ContactRole,id'
+            'company_id' => 'required|exists:App\Models\Company,id',
+            'contact_role_id' => 'required|exists:App\Models\ContactRole,id'
         ];
     }
 }

@@ -12,11 +12,11 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Contact::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Contact::class, function (Faker\Generator $faker) {
 
     return [
         'first_name' => $faker->firstName,
         'last_name' => $faker->lastName,
-        'contact_role_id' => App\ContactRole::inRandomOrder()->first()->id
+        'contact_role_id' => App\Models\ContactRole::inRandomOrder()->first()->id
     ];
 });

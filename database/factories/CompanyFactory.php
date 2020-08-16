@@ -12,11 +12,11 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Company::class, function (Faker\Generator $faker) {
+$factory->define(App\Models\Company::class, function (Faker\Generator $faker) {
 
     return [
         'name' => $faker->company,
-        'company_type_id' => App\CompanyType::inRandomOrder()->first()->id,
-        'company_status_id' => App\CompanyStatus::inRandomOrder()->first()->id
+        'company_type_id' => App\Models\CompanyType::inRandomOrder()->first()->id,
+        'company_status_id' => App\Models\CompanyStatus::inRandomOrder()->first()->id
     ];
 });

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
-use App\CompanyStatus;
-use App\CompanyType;
+use App\Models\Company;
+use App\Models\CompanyStatus;
+use App\Models\CompanyType;
 use App\Http\Requests\CreateCompany;
 use App\Http\Requests\UpdateCompany;
 

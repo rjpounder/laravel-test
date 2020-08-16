@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Address;
-use App\Contact;
+use App\Models\Address;
+use App\Models\Contact;
 use App\Http\Requests\CreateAddress;
 use App\Http\Requests\UpdateAddress;
 

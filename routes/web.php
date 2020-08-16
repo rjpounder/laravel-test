@@ -33,6 +33,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('addresses/{contact}/create', 'AddressesController@store')->name('addresses.store');
     Route::get('addresses/{address}/edit', 'AddressesController@edit')->name('addresses.edit');
     Route::post('addresses/{address}/update', 'AddressesController@update')->name('addresses.update');
+
+    Route::get('orders', 'OrderController@index')->name('orders');
+    Route::get('orders/{contact}/create', 'OrderController@create')->name('orders.create');
+    Route::post('orders/{contact}/create', 'OrderController@store')->name('orders.store');
+    Route::get('orders/{order}/edit', 'OrderController@edit')->name('orders.edit');
+    Route::post('orders/{order}/update', 'OrderController@update')->name('orders.update');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
