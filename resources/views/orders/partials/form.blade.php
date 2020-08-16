@@ -88,7 +88,7 @@
 
 @section('foot')
     <script type="text/javascript">
-        let currentIndex = {{$order->orderItems->count()}};
+        let currentIndex = {{$order->orderItems->count() === 0 ? '1' : $order->orderItems->count()}};
 
         function deleteOrderItem(index){
             if(index > 0){
