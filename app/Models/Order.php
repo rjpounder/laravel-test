@@ -31,7 +31,6 @@ class Order extends Model
      * @var array
      */
     protected $fillable = [
-
     ];
 
     protected $appends = [
