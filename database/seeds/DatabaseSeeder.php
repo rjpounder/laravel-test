@@ -47,7 +47,12 @@ class DatabaseSeeder extends Seeder
         \Illuminate\Support\Facades\DB::beginTransaction();
 
         factory(App\Company::class, 250)->create()->each(function ($c) {
-            $c->contacts()->saveMany(factory(App\Contact::class, rand(1, 5))->make());
+            $contacts = factory(App\Contact::class, rand(1, 5))->make();
+            $c->contacts()->saveMany($contacts);
+            $contacts->each(function ($contact) {
+                $addresses = factory(App\Address::class, rand(1, 5))->make();
+                $contact->addresses()->saveMany($addresses);
+            });
         });
 
         \Illuminate\Support\Facades\DB::commit();
