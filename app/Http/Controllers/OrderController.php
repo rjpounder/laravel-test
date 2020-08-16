@@ -46,15 +46,32 @@ class OrderController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
      * @param CreateOrder $request
-     * @param Contact $contact
-     * @return void
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Throwable
      */
-    public function store(CreateOrder $request, Contact $contact)
+    public function store(CreateOrder $request)
     {
-        //
+        $order = new Order;
+
+        $contact = Contact::whereId($request->contact_id)->first();
+
+        $orderItems = [];
+        foreach($request->orderitem as $orderItem){
+            $orderItems[] = new OrderItem([
+                'name' => $orderItem['name'],
+                'price' => $orderItem['price'],
+            ]);
+        }
+
+        \DB::transaction(function() use ($order, $orderItems, $contact) {
+            $order->contact()->associate($contact);
+            $order->save();
+            $order->orderItems()->delete();
+            $order->orderItems()->saveMany($orderItems);
+        });
+
+        return redirect('orders')->with('alert', 'Order created!');
     }
 
     /**
