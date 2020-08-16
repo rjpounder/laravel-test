@@ -7,10 +7,10 @@
                 <div class="card">
                     <div class="card-header">
                         <div class="btn-group float-right" role="group">
-                            <a href="{{ route('contacts.create') }}" class="btn btn-success">Add new</a>
+                            <a href="{{ route('orders.create') }}" class="btn btn-success">Add new</a>
                         </div>
                         <h2>
-                            Contacts
+                            Orders
                         </h2>
 
                     </div>
@@ -19,30 +19,37 @@
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Role</th>
-                                <th>Company</th>
-                                <th>Company Status</th>
+                                <th>Order ID
+                                    <small><a href="{{route('orders', ['sortBy' => 'id', 'direction' => 'asc'])}}">asc</a>
+                                        <a href="{{route('orders', ['sortBy' => 'id', 'direction' => 'desc'])}}">desc</a></small>
+                                </th>
+                                <th>Contact</th>
+                                <th>Items #
+                                    <small><a href="{{route('orders', ['sortBy' => 'items', 'direction' => 'asc'])}}">asc</a>
+                                        <a href="{{route('orders', ['sortBy' => 'items', 'direction' => 'desc'])}}">desc</a></small>
+                                </th>
+                                <th>Total Price
+                                    <small><a href="{{route('orders', ['sortBy' => 'total', 'direction' => 'asc'])}}">asc</a>
+                                        <a href="{{route('orders', ['sortBy' => 'total', 'direction' => 'desc'])}}">desc</a></small>
+                                </th>
                                 <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($contacts as $contact)
+                            @foreach($orders as $order)
                                 <tr>
-                                    <td>{{ $contact->id }}</td>
-                                    <td>{{ $contact->first_name }} {{ $contact->last_name }}</td>
-                                    <td>{{ $contact->contactRole->name }}</td>
-                                    <td>{{ $contact->company->name }} ({{ $contact->company->companyType->name }})</td>
-                                    <td>{{ $contact->company->companyStatus->name }}</td>
-                                    <td><a href="{{ route('contacts.edit', $contact) }}"
+                                    <td>{{ $order->id }}</td>
+                                    <td><a href="{{route('contacts.edit', $order->contact->id)}}">{{ $order->contact->fullName }}</a></td>
+                                    <td>{{ $order->order_items_count }}</td>
+                                    <td>&pound; {{ $order->total_price }}</td>
+                                    <td><a href="{{ route('orders.edit', $order) }}"
                                            class="btn btn-primary">Edit</a></td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
 
-                        {{ $contacts->links() }}
+                        {{ $orders->links() }}
                     </div>
                 </div>
             </div>
