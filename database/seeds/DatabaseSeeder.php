@@ -55,6 +55,14 @@ class DatabaseSeeder extends Seeder
             });
         });
 
+
+        \Illuminate\Support\Facades\DB::commit();
+
+        \Illuminate\Support\Facades\DB::beginTransaction();
+        factory(App\Models\Order::class, 250)->create()->each(function ($o) {
+            $items = factory(App\Models\OrderItem::class, rand(1, 10))->make();
+            $o->orderItems()->saveMany($items);
+        });
         \Illuminate\Support\Facades\DB::commit();
     }
 }
