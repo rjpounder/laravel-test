@@ -29,6 +29,9 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Contact whereUpdatedAt($value)
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Address[] $addresses
  * @property-read int|null $addresses_count
+ * @property-read mixed $full_name
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Order[] $orders
+ * @property-read int|null $orders_count
  */
 class Contact extends Model
 {
@@ -67,5 +70,18 @@ class Contact extends Model
     public function contactRole()
     {
         return $this->belongsTo(ContactRole::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function getFullNameAttribute()
+    {
+        return $this->first_name. " " . $this->last_name;
     }
 }

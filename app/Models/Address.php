@@ -33,6 +33,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereTown($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Address whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $zip_code
+ * @method static \Illuminate\Database\Eloquent\Builder|Address whereZipCode($value)
  */
 class Address extends Model
 {
