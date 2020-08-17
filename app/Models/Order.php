@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property-read \App\Models\Contact $contact
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\OrderItem[] $orderItems
  * @property-read int|null $order_items_count
+ * @property double totalPrice
  * @method static \Illuminate\Database\Eloquent\Builder|Order newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Order query()

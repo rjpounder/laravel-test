@@ -65,14 +65,17 @@ class OrderController extends Controller
             ]);
         }
 
-        \DB::transaction(function() use ($order, $orderItems, $contact) {
+        $orderId = null;
+
+        \DB::transaction(function() use ($order, $orderItems, $contact, &$orderId) {
             $order->contact()->associate($contact);
             $order->save();
+            $orderId = $order->id;
             $order->orderItems()->delete();
             $order->orderItems()->saveMany($orderItems);
         });
 
-        event(new OrderCreated($order, $request->user()));
+        event(new OrderCreated(Order::find($orderId), $request->user()));
 
         return redirect('orders')->with('alert', 'Order created!');
     }

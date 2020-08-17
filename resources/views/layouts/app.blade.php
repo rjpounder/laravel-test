@@ -21,6 +21,15 @@
     @yield('head')
 </head>
 <body>
+<div class="notifications">
+    @if(Auth::user())
+        @foreach (Auth::user()->unreadNotifications as $notification)
+            Order Created: # {{$notification->data['order_id']}} | Price: {{$notification->data['price']}}
+            @php($notification->markAsRead())
+        @endforeach
+    @endif
+</div>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
