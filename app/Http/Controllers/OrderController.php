@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\OrderCreated;
 use App\Http\Requests\CreateOrder;
 use App\Http\Requests\UpdateOrder;
 use App\Models\Company;
@@ -70,6 +71,8 @@ class OrderController extends Controller
             $order->orderItems()->delete();
             $order->orderItems()->saveMany($orderItems);
         });
+
+        event(new OrderCreated($order, $request->user()));
 
         return redirect('orders')->with('alert', 'Order created!');
     }
