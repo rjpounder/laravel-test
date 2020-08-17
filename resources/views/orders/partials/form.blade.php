@@ -47,11 +47,13 @@
                     @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <button onclick="deleteOrderItem({{$loop->index}})" type="button">Remove</button>
+            @if($loop->index !==0)
+                <div class="row">
+                    <div class="col-md-12">
+                        <button onclick="deleteOrderItem({{$loop->index}})" type="button">Remove</button>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     @endforeach
 @else
@@ -113,7 +115,7 @@
                 '    </div>' +
                 '    <div class="row">' +
                 '       <div class="col-md-12">' +
-                '           <button onclick="deleteOrderItem(index)" type="button">Remove</button>' +
+                '           <button onclick="deleteOrderItem('+index+')" type="button">Remove</button>' +
                 '       </div>' +
                 '    </div>' +
                 ''
