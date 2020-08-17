@@ -6,10 +6,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\OrderCreated;
 
-class SendOrderDetailsNotification implements ShouldQueue
+class SendOrderDetailsToCustomer
 {
-    use InteractsWithQueue;
-
     /**
      * Create the event listener.
      *
@@ -17,6 +15,7 @@ class SendOrderDetailsNotification implements ShouldQueue
      */
     public function __construct()
     {
+        //
     }
 
     /**
@@ -27,10 +26,6 @@ class SendOrderDetailsNotification implements ShouldQueue
      */
     public function handle(OrderCreated $event)
     {
-        if ($this->attempts() === 0) {
-            $this->release(30 * 60);
-        } else {
-            \Mail::to('info@pretendcompany.com')->send(new \App\Mail\OrderCreated($event->order));
-        }
+        \Mail::to($event->user)->send(new \App\Mail\OrderCreated($event->order));
     }
 }
