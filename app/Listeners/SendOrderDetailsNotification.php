@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use App\Notifications\OrderCreatedNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use App\Events\OrderCreated;
@@ -30,7 +31,7 @@ class SendOrderDetailsNotification implements ShouldQueue
         if ($this->attempts() === 0) {
             $this->release(30 * 60);
         } else {
-            \Mail::to('info@pretendcompany.com')->send(new \App\Mail\OrderCreated($event->order));
+            $event->user->notify(new OrderCreatedNotification($event->order));
         }
     }
 }
