@@ -4,9 +4,12 @@ namespace App\Listeners;
 
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use App\Events\OrderCreated;
 
-class SendOrderDetailsToCustomer
+class SendOrderDetailsOut implements ShouldQueue
 {
+    use InteractsWithQueue;
+
     /**
      * Create the event listener.
      *
@@ -20,10 +23,10 @@ class SendOrderDetailsToCustomer
     /**
      * Handle the event.
      *
-     * @param  object  $event
+     * @param OrderCreated $event
      * @return void
      */
-    public function handle($event)
+    public function handle(OrderCreated $event)
     {
         //
     }
